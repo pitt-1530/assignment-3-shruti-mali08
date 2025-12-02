@@ -10,7 +10,7 @@ public class PlaylistRecommender {
         // checking for null or empty lists
         if(bpms == null || bpms.isEmpty())
         {
-            throw new UnsupportedOperationException("The list cannot be null or empty.");
+            return "The list cannot be null or empty.";
         }
         
         // calculating the average bpm
@@ -19,33 +19,32 @@ public class PlaylistRecommender {
         {
             sum += bpm;
         }
-
         double avg = sum/bpms.size();
 
+        // conditional statements
         if(avg >= 140)
             return "HIGH";
         else if(avg < 100)
             return "LOW";
         else
-            return "NEDIUM";
+            return "MEDIUM";
     }
 
     public static boolean isValidTrackTitle(String title) {
         // TODO: Implement isValidTrackTitle()
+
         // checking null or empty string
         if(title == null || title.isEmpty())
             return false;
 
         // check string length
         if((title.length() < 1) || (title.length()> 30))
-            // throw new UnsupportedOperationException("String should be of length 1 to 30");
             return false;
 
         // checking for special characters
         if(!title.matches("[a-zA-Z0-9 +]+"))
             return false;
 
-        // throw new UnsupportedOperationException("Not implemented");
         return true; 
     }
 
@@ -60,6 +59,5 @@ public class PlaylistRecommender {
         }
 
         return volumeDb;
-        // throw new UnsupportedOperationException("Not implemented");
     }
 }
